@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import InterviewerList from 'components/InterviewerList';
 import Button from 'components/Button';
+import Empty from './Empty';
 
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
@@ -13,7 +14,7 @@ export default function Form(props) {
 
   const cancel = () => {
     reset();
-    props.onCancel();
+    props.onClick();
   }
 
 

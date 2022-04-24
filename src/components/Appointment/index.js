@@ -3,19 +3,42 @@ import 'components/Appointment/styles.scss';
 import Header from './Header';
 import Show from './Show';
 import Empty from './Empty';
+import useVisualMode from 'hooks/useVisualMode';
+import Form from './Form';
 
+const EMPTY = "EMPTY";
+const SHOW = "SHOW";
+const CREATE = "CREATE";
 
 export default function Appointment(props) {
+  const { mode, transition, back } = useVisualMode(
+    props.interview ? SHOW : EMPTY
+  )
+
+  
+
   return (
     <article className="appointment">
       <Header 
         time={props.time}
       />
-      { props.interview ? 
-      <Show 
-        interviewer={props.interview.interviewer} 
-        student={props.interview.student}
-      /> : <Empty /> }
+      { mode === EMPTY && <Empty onAdd={() => {(transition(CREATE))}} /> }
+      {mode === CREATE &&
+        <Form 
+          value={props.value}
+          student={props.student}
+          interviewer={props.interviewer}
+          interviewers={[]}
+          onChange={props.onChange}
+          onClick={() => {back()}}
+        />
+      }
+      { mode === SHOW && (
+        <Show 
+          student={props.interview.student}
+          interview={props.interview.interviewer}
+        />
+      )}
     </article>
   )
 }
