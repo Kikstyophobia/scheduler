@@ -36,6 +36,7 @@ export default function Application(props) {
     // "proxy": "http://localhost:8001"
     return axios.put(`/api/appointments/${id}`, {interview}) 
       .then(() => {
+        console.log("inside then");
         setState({...state, appointments})
       })
 
