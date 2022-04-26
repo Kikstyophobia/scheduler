@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import InterviewerList from 'components/InterviewerList';
 import Button from 'components/Button';
-import Empty from './Empty';
 
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
@@ -17,8 +16,8 @@ export default function Form(props) {
     props.onClick();
   }
 
-
-
+ 
+  
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">

@@ -1,25 +1,36 @@
-import InterviewerList from 'components/InterviewerList';
-import {React, useState} from 'react';
-
 
 export function getAppointmentsForDay(state, day) {
-  let objDays = state.days;
-  let objAppointments = state.appointments;
+  let filteredAppointments = [];
+  const foundDay = state.days.filter((d) => d.name === day)[0]
 
-  let dayArray = objDays.filter((obj) => 
-    obj.name === day
-  )
-
-  if (dayArray.length === 0) {
+  if (state.days.length === 0 || foundDay === undefined) {
     return [];
   }
-  
-  let interviewArray = dayArray[0].appointments
-    .map(num => {
-      return objAppointments[num]
-    }) 
 
-  return interviewArray
+  foundDay.appointments.forEach((appointmentsId) => {
+    filteredAppointments.push(state.appointments[appointmentsId])
+    
+  })
+
+  return filteredAppointments;
+
+  // let objDays = state.days;
+  // let objAppointments = state.appointments;
+
+  // let dayArray = objDays.filter((obj) => 
+  //   obj.name === day
+  // )
+
+  // if (dayArray.length === 0 || dayArray === undefined) {
+  //   return [];
+  // }
+  
+  // let interviewArray = dayArray[0].appointments
+  //   .map(num => {
+  //     return objAppointments[num]
+  //   }) 
+
+  // return interviewArray
 }
 
 

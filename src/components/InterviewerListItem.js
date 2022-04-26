@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import "components/InterviewerListItem.scss"
-import { action } from '@storybook/addon-actions';
+
 
 export default function InterviewerListItem(props) {
   const interviewerClass = classNames('interviewers__item', 
