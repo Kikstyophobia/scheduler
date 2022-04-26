@@ -41,7 +41,6 @@ export function getInterview(state, interview) {
   }
 
   let interviewerObj = {...interview, interviewer: state.interviewers[interview.interviewer] };
-
   return interviewerObj;
 }
 
