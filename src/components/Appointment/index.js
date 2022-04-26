@@ -6,6 +6,7 @@ import Empty from './Empty';
 import useVisualMode from 'hooks/useVisualMode';
 import Form from './Form';
 
+
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -15,7 +16,14 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   )
 
-  
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    props.bookInterview(props.id, interview) 
+    transition(SHOW)
+  }
 
   return (
     <article className="appointment">
@@ -23,7 +31,7 @@ export default function Appointment(props) {
         time={props.time}
       />
       { mode === EMPTY && <Empty onAdd={() => {(transition(CREATE))}} /> }
-      {mode === CREATE &&
+      { mode === CREATE &&
         <Form 
           value={props.value}
           student={props.student}
@@ -31,6 +39,7 @@ export default function Appointment(props) {
           interviewers={[]}
           onChange={props.onChange}
           onClick={() => {back()}}
+          onSave={save}
         />
       }
       { mode === SHOW && (
