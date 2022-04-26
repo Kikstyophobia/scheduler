@@ -10,6 +10,7 @@ import Form from './Form';
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
@@ -22,15 +23,22 @@ export default function Appointment(props) {
       interviewer
     };
     props.bookInterview(props.id, interview) 
-    transition(SHOW)
+      .then(() => {
+        transition(SAVING)
+      })
+      .then(() => {
+        transition(SHOW);
+      })
   }
 
+  console.log("int props",props.interview);
   return (
     <article className="appointment">
       <Header 
         time={props.time}
       />
       { mode === EMPTY && <Empty onAdd={() => {(transition(CREATE))}} /> }
+      { mode === SAVING && <Show />}
       { mode === CREATE &&
         <Form 
           value={props.value}

@@ -5,13 +5,12 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
 import { getAppointmentsForDay, getInterview } from "helpers/selectors";
-import useVisualMode from "hooks/useVisualMode";
+// import useVisualMode from "hooks/useVisualMode";
 
 
 
 export default function Application(props) {
 
-  const appointmentArray = [];
   const setDay = day => setState({...state, day})
   const [state, setState] = useState({
     day: "Monday",
@@ -31,10 +30,13 @@ export default function Application(props) {
       [id]: appointment
     }
 
-    setState({
-      ...state,
-      appointments
-    })
+
+    // "proxy": "http://localhost:8001"
+    return axios.put(`/api/appointments/${id}`, {interview}) 
+      .then(() => {
+        setState({...state, appointments})
+      })
+  
 
   }
 
