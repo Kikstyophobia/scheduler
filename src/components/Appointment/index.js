@@ -28,6 +28,7 @@ export default function Appointment(props) {
   )
 
   function save(name, interviewer) {
+ 
     const interview = {
       student: name,
       interviewer
@@ -40,7 +41,7 @@ export default function Appointment(props) {
         transition(SHOW);
       })
       .catch(() => {
-        transition(ERROR_SAVE);
+        transition(ERROR_SAVE, true);
       })
 
   }
@@ -62,8 +63,11 @@ export default function Appointment(props) {
       })
   }
 
+  if (props.interview) {
+    console.log("this is what we want", props.interview.interviewer);
 
-  
+  }
+
   return (
     <article className="appointment">
       <Header 
@@ -77,9 +81,9 @@ export default function Appointment(props) {
       { mode === CONFIRM && <Confirm onConfirm={deleteInterview} onCancel={() => {transition(SHOW)}}/>}
       { mode === EDIT && 
         <Form 
-          value={props.value}
-          student={props.student}
-          interviewer={props.interviewer}
+          // value={props.value}
+          student={props.interview.student}
+          interviewer={props.interview.interviewer.id}
           interviewers={props.interviewers}
           onChange={props.onChange}
           onClick={() => {back()}}
@@ -87,7 +91,7 @@ export default function Appointment(props) {
         /> }
       { mode === CREATE &&
         <Form 
-          value={props.value}
+          // value={props.value}
           student={props.student}
           interviewer={props.interviewer}
           interviewers={props.interviewers}
