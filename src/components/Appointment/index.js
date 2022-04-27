@@ -35,10 +35,8 @@ export default function Appointment(props) {
 
     transition(SAVING);
  
-
     props.bookInterview(props.id, interview) 
       .then(() => {
-        console.log(props.interview);
         transition(SHOW);
       })
       .catch(() => {
@@ -54,13 +52,13 @@ export default function Appointment(props) {
       interviewer
     };
 
-    transition(DELETING);
+    transition(DELETING, true);
     props.cancelInterview(props.id, interview)
       .then(() =>  {
         transition(EMPTY);
       })
       .catch(() => {
-        transition(ERROR_DELETE);
+        transition(ERROR_DELETE, true);
       })
   }
 
@@ -73,9 +71,9 @@ export default function Appointment(props) {
       />
       { mode === EMPTY && <Empty onAdd={() => {(transition(CREATE))}} /> }
       { mode === SAVING && <Status message={'Saving'} />}
-      { mode === ERROR_SAVE && <Error message={'Could not save appointment.'} />}
+      { mode === ERROR_SAVE && <Error message={'Could not save appointment.'}  onClose={() => {transition(SHOW, true)}} />}
       { mode === DELETING && <Status message={'Deleting'} />}
-      { mode === ERROR_DELETE && <Error message={'Could not delete appointment.'} />}
+      { mode === ERROR_DELETE && <Error message={'Could not delete appointment.'}  onClose={() => {transition(SHOW, true)}} />}
       { mode === CONFIRM && <Confirm onConfirm={deleteInterview} onCancel={() => {transition(SHOW)}}/>}
       { mode === EDIT && 
         <Form 
