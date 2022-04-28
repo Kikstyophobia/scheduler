@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InterviewerList from 'components/InterviewerList';
 import Button from 'components/Button';
 
+
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
@@ -19,12 +20,12 @@ export default function Form(props) {
 
   const validate = () => {
     if (!student) {
-      setError("Student name cannot be empty.")
+      setError("Student name cannot be blank")
       return;
     } 
     
     if (!interviewer) {
-      setError("Must select an interviewer.")
+      setError("Please select an interviewer")
       return;
     }
 
@@ -36,9 +37,19 @@ export default function Form(props) {
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        {error && <p>{error}</p>}
         <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <input
+            className="appointment__create-input text--semi-bold"
+            name="name"
+            type="text"
+            placeholder="Enter Student Name"
+            value={student}
+            onChange={event => {
+              setStudent(event.target.value);
+            }}
+            data-testid="student-name-input"
+          />
+          {/* <input
             className="appointment__create-input text--semi-bold"
             name="name"
             type="text"
@@ -50,8 +61,9 @@ export default function Form(props) {
               }
               setStudent(event.target.value);
             }}
-          />
+          /> */}
         </form >
+        {error && <p>{error}</p>}
         <InterviewerList 
           interviewers={props.interviewers}
           value={interviewer}

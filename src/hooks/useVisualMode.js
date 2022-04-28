@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
 
 export default function useVisualMode(initial) {
   const [history, setHistory] = useState([initial]);
 
   function transition(mode, replace = false) {
-    // console.log(history);
+
     if (!replace) {
       return setHistory((prev) => [...prev, mode]);
     } 
@@ -13,10 +12,9 @@ export default function useVisualMode(initial) {
       return [...prev.slice(0, -1), mode];
     })  
   }
-  
-  useEffect(() => {
-    console.log(history);
-  }, [history])
+  // useEffect(() => {
+  //   console.log(history);
+  // }, [history])
 
 
   function back() {

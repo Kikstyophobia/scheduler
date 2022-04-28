@@ -63,10 +63,10 @@ export default function Appointment(props) {
       })
   }
 
-  if (props.interview) {
-    console.log("this is what we want", props.interview.interviewer);
+  // if (props.interview) {
+  //   console.log("this is what we want", props.interview.interviewer);
 
-  }
+  // }
 
   return (
     <article className="appointment">

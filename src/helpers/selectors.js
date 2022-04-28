@@ -6,7 +6,7 @@ export function getAppointmentsForDay(state, day) {
   if (state.days.length === 0 || foundDay === undefined) {
     return [];
   }
-
+  
   foundDay.appointments.forEach((appointmentsId) => {
     filteredAppointments.push(state.appointments[appointmentsId])
     
@@ -51,7 +51,7 @@ export function getInterviewersForDay(state, day) {
   let dayArray = objDays.filter((obj) => 
     obj.name === day
   )
-
+  
   if (dayArray.length === 0) {
     return [];
   }
