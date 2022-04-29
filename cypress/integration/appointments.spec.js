@@ -88,7 +88,7 @@ describe("Appointments", () => {
     
   })
 
-  it("should cancel an interview", () => {
+  it("sees that the appointment slot is empty", () => {
     
     cy.get("[alt=Delete]")
       .click({ force: true });
