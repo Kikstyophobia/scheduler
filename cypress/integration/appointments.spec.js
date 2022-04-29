@@ -74,7 +74,7 @@ describe("Appointments", () => {
 
   })
 
-  it("clicks the confirm button", () => {
+  it.skip("clicks the confirm button", () => {
     cy.get(".appointment__card--show")
 
     cy.get("[alt='Delete']")
@@ -88,6 +88,19 @@ describe("Appointments", () => {
     
   })
 
+  it("should cancel an interview", () => {
+    
+    cy.get("[alt=Delete]")
+      .click({ force: true });
 
+    cy.contains("Confirm").click();
+
+    cy.contains("Deleting").should("exist");
+    cy.contains("Deleting").should("not.exist");
+
+    cy.contains(".appointment__card--show", "Archie Cohen")
+      .should("not.exist");
+
+  })
 
 });
