@@ -14,23 +14,6 @@ export function getAppointmentsForDay(state, day) {
 
   return filteredAppointments;
 
-  // let objDays = state.days;
-  // let objAppointments = state.appointments;
-
-  // let dayArray = objDays.filter((obj) => 
-  //   obj.name === day
-  // )
-
-  // if (dayArray.length === 0 || dayArray === undefined) {
-  //   return [];
-  // }
-  
-  // let interviewArray = dayArray[0].appointments
-  //   .map(num => {
-  //     return objAppointments[num]
-  //   }) 
-
-  // return interviewArray
 }
 
 

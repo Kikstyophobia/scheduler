@@ -8,7 +8,7 @@ describe("Appointments", () => {
     cy.contains("Monday");
   })
 
-  it.skip("should book an interview", () => {
+  it("should book an interview", () => {
 
     cy.get("[alt=Add]")
       .first()
@@ -28,7 +28,7 @@ describe("Appointments", () => {
   });
 
   
-  it.skip("should edit an interview", () => {
+  it("should edit an interview", () => {
 
     cy.get(".appointment__card--show")
 
@@ -49,7 +49,7 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Tori Malcolm");
   })
 
-  it.skip("should cancel an interview", () => {
+  it("should cancel an interview", () => {
     cy.get(".appointment__card--show")
 
     cy.get("[alt='Delete']")
@@ -63,7 +63,7 @@ describe("Appointments", () => {
 
   })
 
-  it.skip("clicks the delete button for an existing appointment", () => {
+  it("clicks the delete button for an existing appointment", () => {
     cy.get(".appointment__card--show")
 
     cy.get("[alt='Delete']")
@@ -74,7 +74,7 @@ describe("Appointments", () => {
 
   })
 
-  it.skip("clicks the confirm button", () => {
+  it("clicks the confirm button", () => {
     cy.get(".appointment__card--show")
 
     cy.get("[alt='Delete']")

@@ -23,18 +23,13 @@ export default function useApplicationData() {
     })
   }, []);
 
-   console.log("days",state.days);
-   console.log("appointments",state.appointments);
-   
-  console.log("before state", state);
+
   function spotsRemaining(id, booked) {
-    console.log("id",id);
     const copiedDays = [...state.days];
     const dayIndex = copiedDays.findIndex((appointment) => {
       return appointment.appointments.includes(id)
     })
     copiedDays[dayIndex].spots = booked ? copiedDays[dayIndex].spots - 1 : copiedDays[dayIndex].spots + 1;
-      console.log("copiedays",copiedDays);  
       setState((prev) => {
         return {...prev, days: copiedDays}
       })

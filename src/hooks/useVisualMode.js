@@ -12,9 +12,6 @@ export default function useVisualMode(initial) {
       return [...prev.slice(0, -1), mode];
     })  
   }
-  // useEffect(() => {
-  //   console.log(history);
-  // }, [history])
 
 
   function back() {
