@@ -63,21 +63,18 @@ describe("Appointments", () => {
 
   })
 
-  it("clicks the delete button for an existing appointment", () => {
+  it.skip("clicks the delete button for an existing appointment", () => {
     cy.get(".appointment__card--show")
 
     cy.get("[alt='Delete']")
       .first()
       .click({force: true})
-    
-    // cy.contains(".button--danger", "Confirm")
-    //   .click()
 
     cy.get("[alt='Delete']").should('not.exist')
 
   })
 
-  it.skip("clicks the confirm button", () => {
+  it("clicks the confirm button", () => {
     cy.get(".appointment__card--show")
 
     cy.get("[alt='Delete']")
