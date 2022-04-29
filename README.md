@@ -1,5 +1,14 @@
 # Interview Scheduler
 
+## Pictures
+![Screenshot of the full app](https://github.com/Kikstyophobia/scheduler/blob/master/docs/full-app.png?raw=true)
+
+![Screenshot of the interview form](https://github.com/Kikstyophobia/scheduler/blob/master/docs/form.png?raw=true)
+
+![Screenshot of newly booked interview](https://github.com/Kikstyophobia/scheduler/blob/master/docs/edit-delete.png?raw=true)
+
+![Screenshot of appointment list](https://github.com/Kikstyophobia/scheduler/blob/master/docs/appointment-times.png?raw=true)
+
 ## Setup
 
 Install dependencies with `npm install`.
