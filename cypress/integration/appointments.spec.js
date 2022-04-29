@@ -49,7 +49,7 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Tori Malcolm");
   })
 
-  it("should cancel an interview", () => {
+  it.skip("should cancel an interview", () => {
     cy.get(".appointment__card--show")
 
     cy.get("[alt='Delete']")
@@ -63,7 +63,19 @@ describe("Appointments", () => {
 
   })
 
+  it("clicks the delete button for an existing appointment", () => {
+    cy.get(".appointment__card--show")
 
+    cy.get("[alt='Delete']")
+      .first()
+      .click({force: true})
+    
+    cy.contains(".button--danger", "Confirm")
+      .click()
+
+    cy.get(".appointment__card--show").should('not.exist')
+    
+  })
 
 
 
