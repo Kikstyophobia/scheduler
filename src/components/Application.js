@@ -5,7 +5,7 @@ import DayList from "./DayList";
 import Appointment from "./Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
-import PropTypes from 'prop-types';
+
 
 
 export default function Application(props) {

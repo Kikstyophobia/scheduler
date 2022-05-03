@@ -1,4 +1,5 @@
 
+// gets appoints for a given day
 export function getAppointmentsForDay(state, day) {
   let filteredAppointments = [];
   const foundDay = state.days.filter((d) => d.name === day)[0]
@@ -16,7 +17,7 @@ export function getAppointmentsForDay(state, day) {
 
 }
 
-
+// gets interviewer object
 export function getInterview(state, interview) {
   
   if (!interview) {
@@ -28,6 +29,7 @@ export function getInterview(state, interview) {
 }
 
 
+// gets interviewer for a given day
 export function getInterviewersForDay(state, day) {
   let objDays = state.days;
 

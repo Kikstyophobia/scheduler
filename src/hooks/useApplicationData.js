@@ -23,18 +23,20 @@ export default function useApplicationData() {
     })
   }, []);
 
-
+  // calculates the amount of spots remaining
   function spotsRemaining(id, booked) {
+    const isEditingInterview = !!state.appointments[id].interview && booked
     const copiedDays = [...state.days];
     const dayIndex = copiedDays.findIndex((appointment) => {
       return appointment.appointments.includes(id)
     })
-    copiedDays[dayIndex].spots = booked ? copiedDays[dayIndex].spots - 1 : copiedDays[dayIndex].spots + 1;
+    copiedDays[dayIndex].spots = isEditingInterview ? copiedDays[dayIndex].spots : (booked ? copiedDays[dayIndex].spots - 1 : copiedDays[dayIndex].spots + 1);
       setState((prev) => {
         return {...prev, days: copiedDays}
       })
   }
   
+  // books and edits interviews
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -46,7 +48,7 @@ export default function useApplicationData() {
       [id]: appointment
     }
 
-    // "proxy": "http://localhost:8001"
+
     return axios.put(`/api/appointments/${id}`, {interview}) 
       .then(() => {
         setState((prev) => ({...prev, appointments}))
@@ -55,7 +57,7 @@ export default function useApplicationData() {
 
   };
 
-
+  // delete interview
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],

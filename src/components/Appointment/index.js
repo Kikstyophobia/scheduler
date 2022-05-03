@@ -76,7 +76,6 @@ export default function Appointment(props) {
       { mode === CONFIRM && <Confirm onConfirm={deleteInterview} onCancel={() => {transition(SHOW)}}/>}
       { mode === EDIT && 
         <Form 
-          // value={props.value}
           student={props.interview.student}
           interviewer={props.interview.interviewer.id}
           interviewers={props.interviewers}
@@ -86,7 +85,6 @@ export default function Appointment(props) {
         /> }
       { mode === CREATE &&
         <Form 
-          // value={props.value}
           student={props.student}
           interviewer={props.interviewer}
           interviewers={props.interviewers}
