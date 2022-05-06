@@ -35,9 +35,9 @@ export default function useApplicationData() {
         return {...prev, days: copiedDays}
       })
   }
-  
   // books and edits interviews
   function bookInterview(id, interview) {
+
     const appointment = {
       ...state.appointments[id],
       interview: {...interview}

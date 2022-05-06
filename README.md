@@ -13,6 +13,17 @@
 
 Install dependencies with `npm install`.
 
+## Running scheduler-api Server
+
+```sh
+npm start
+```
+
+## Running scheduler-api Server in test/error mode
+```sh
+npm run error
+``` 
+
 ## Running Webpack Development Server
 
 ```sh
